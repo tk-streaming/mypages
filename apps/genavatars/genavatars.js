@@ -24,7 +24,7 @@ function appendAvatar(avatar, label) {
     avatar_dom.style.backgroundImage = `url('${avatar.data}')`
     avatar_dom.style.setProperty("cursor", "hand")
     avatar_dom.onclick = async (_) => {
-        await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eye:${avatar.eye} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
+        await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eyes:${avatar.eye} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
     }
     avatar_dom.onmouseenter = (_) => { avatar_dom.classList.add("speaking") }
     avatar_dom.onmouseleave = (_) => { avatar_dom.classList.remove("speaking") }
