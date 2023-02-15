@@ -15,9 +15,8 @@ function buildAvatar(parts, skelton) {
 }
 
 window.addEventListener('load', async () => {
-    const skelton = await (await fetch("./skelton.svg")).body.getReader().read;
-    console.log(skelton)
-    const parts = JSON.parse(await (await fetch("./parts.json")).body.getReader().read);
+    const skelton = await (await fetch("https://tk-streaming.github.io/mypages/apps/genavatars/skelton.svg")).text()
+    const parts = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/apps/genavatars/parts.json")).text());
     for(var i=0; i<120; i++) {
         const svg = buildAvatar(parts, skelton)
         var avatar = document.createElement("div")
