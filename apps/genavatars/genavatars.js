@@ -1,11 +1,3 @@
-const reserved = [
-    { name: "tk", avatarInfo: { "body": "tk", "eye": "tk", "basecolor": "#f7931e", "accentcolor": "#f15a24" } },
-    { name: "sg", avatarInfo: { "body": "sg", "eye": "sg", "basecolor": "#3fa9f5", "accentcolor": "#0071bc" } },
-    { name: "suwa", avatarInfo: { "body": "suwa", "eye": "suwa", "basecolor": "#e6e6e6", "accentcolor": "gray" } },
-    { name: "ino", avatarInfo: { "body": "ino", "eye": "ino", "basecolor": "#ff7bac", "accentcolor": "#ed1e79" } },
-    { name: "sukirobo", avatarInfo: { "body": "sukirobo", "eye": "sukirobo", "basecolor": "#8cc63f", "accentcolor": "#009245" } },
-]
-
 function buildAvatar(parts, skelton, avatarInfo) {
     if (!avatarInfo) {
         const r = Math.floor(Math.random() * 205)
@@ -26,29 +18,30 @@ function buildAvatar(parts, skelton, avatarInfo) {
     return avatarInfo
 }
 
-function appendAvatar(avatarInfo, label) {
-    var avatar = document.createElement("div")
-    avatar.classList.add("avatar")
-    avatar.classList.add("speaking")
-    avatar.style.backgroundImage = `url('${avatarInfo.data}')`
-    avatar.style.setProperty("cursor", "hand")
-    avatar.onclick = async (e) => {
-        await navigator.clipboard.writeText(`/nb avatar body:${avatarInfo.body} eye:${avatarInfo.eye} basecolor:${avatarInfo.basecolor} accentcolor:${avatarInfo.accentcolor}`)
+function appendAvatar(avatar, label) {
+    var avatar_dom = document.createElement("div")
+    avatar_dom.classList.add("avatar")
+    avatar_dom.classList.add("speaking")
+    avatar_dom.style.backgroundImage = `url('${avatar.data}')`
+    avatar_dom.style.setProperty("cursor", "hand")
+    avatar_dom.onclick = async (e) => {
+        await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eye:${avatar.eye} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
     }
-    avatar.innerHTML = label
-    document.getElementById("avatars").appendChild(avatar)
+    avatar_dom.innerHTML = label
+    document.getElementById("avatars").appendChild(avatar_dom)
 }
 
 window.addEventListener('load', async () => {
-    const skelton = await (await fetch("https://tk-streaming.github.io/mypages/apps/genavatars/skelton.svg")).text()
-    const parts = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/apps/genavatars/parts.json")).text());
-    reserved.forEach(x => {
-        const avatarInfo = buildAvatar(parts, skelton, x.avatarInfo)
-        appendAvatar(avatarInfo, `<span style="font-weight: bold;">reserved by ${x.name}</a>`)
+    const skelton = await (await fetch("https://tk-streaming.github.io/mypages/img/skelton.svg")).text()
+    const parts = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/parts.json")).text())
+    const reserved = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/reserved.json")).text())
+    Object.values(reserved).forEach(x => {
+        const avatar = buildAvatar(parts, skelton, x.avatar)
+        appendAvatar(avatar, `<span style="font-weight: bold;">reserved by ${x.name}</a>`)
     })
     for(var i=0; i<120; i++) {
-        const avatarInfo = buildAvatar(parts, skelton, undefined)
-        appendAvatar(avatarInfo, "")
+        const avatar = buildAvatar(parts, skelton, undefined)
+        appendAvatar(avatar, "")
     }
 });
 
