@@ -13,7 +13,6 @@
     flex-wrap: wrap;
 }
 .avatar {
-    text-align: center;
     counter-increment: avatar-count;
     display: flex;
     flex-direction: row;
@@ -28,8 +27,6 @@
     font-size: small;
 }
 .avatar.speaking {
-    width: 187px;
-    height: 243px;
     animation: avatar-etc-speaking 0.2s steps(2) infinite;
 }
 @keyframes avatar-etc-speaking {
