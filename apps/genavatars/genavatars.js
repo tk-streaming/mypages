@@ -11,18 +11,22 @@ function buildAvatar(parts, skelton) {
         .replace(/\[\[eyes\]\]/g, parts["eyes"][eye])
         .replace(/\[\[basecolor\]\]/g, basecolor)
         .replace(/\[\[accentcolor\]\]/g, accentcolor)
-    return `data:image/svg+xml;charset=utf8,${encodeURIComponent(s)}`
+    return { data: `data:image/svg+xml;charset=utf8,${encodeURIComponent(s)}`, body: body, eye: eye, basecolor: basecolor, accentcolor: accentcolor }
 }
 
 window.addEventListener('load', async () => {
     const skelton = await (await fetch("https://tk-streaming.github.io/mypages/apps/genavatars/skelton.svg")).text()
     const parts = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/apps/genavatars/parts.json")).text());
     for(var i=0; i<120; i++) {
-        const svg = buildAvatar(parts, skelton)
+        const avatarInfo = buildAvatar(parts, skelton)
         var avatar = document.createElement("div")
         avatar.classList.add("avatar")
         avatar.classList.add("speaking")
-        avatar.style.backgroundImage = `url('${svg}')`
+        avatar.style.backgroundImage = `url('${avatarInfo.data}')`
+        avatar.style.setProperty("cursor", "hand")
+        avatar.onclick = async (e) => {
+            await navigator.clipboard.writeText(`/nb avatar body:${avatarInfo.body} eye:${avatarInfo.eye} basecolor:${avatarInfo.basecolor} accentcolor:${avatarInfo.accentcolor}`)
+        }
         document.getElementById("avatars").appendChild(avatar)
     }
 });
