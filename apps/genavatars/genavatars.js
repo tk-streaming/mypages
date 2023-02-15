@@ -27,7 +27,11 @@ function appendAvatar(avatar, label) {
     avatar_dom.onclick = async (e) => {
         await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eye:${avatar.eye} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
     }
-    avatar_dom.innerHTML = label
+    
+    var label_dom = document.createElement("div")
+    label_dom.innerHTML = label
+    label_dom.classList.add("label")
+    avatar_dom.appendChild(label_dom)
     document.getElementById("avatars").appendChild(avatar_dom)
 }
 
@@ -37,7 +41,7 @@ window.addEventListener('load', async () => {
     const reserved = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/reserved.json")).text())
     Object.values(reserved).forEach(x => {
         const avatar = buildAvatar(parts, skelton, x.avatar)
-        appendAvatar(avatar, `<span style="font-weight: bold;">reserved by ${x.name}</a>`)
+        appendAvatar(avatar, `RESERVED`)
     })
     for(var i=0; i<120; i++) {
         const avatar = buildAvatar(parts, skelton, undefined)
