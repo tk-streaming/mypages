@@ -44,7 +44,7 @@ function generateAvatars(parts, skelton, reserved) {
         const avatar = buildAvatar(parts, skelton, x.avatar)
         appendAvatar(avatar, `RESERVED`)
     })
-    for(var i=0; i<120; i++) {
+    for(var i=0; i<95; i++) {
         const avatar = buildAvatar(parts, skelton, undefined)
         appendAvatar(avatar, undefined)
     }
