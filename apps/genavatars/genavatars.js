@@ -4,8 +4,8 @@ function buildAvatar(parts, skelton, avatarInfo) {
         const g = Math.floor(Math.random() * 205)
         const b = Math.floor(Math.random() * 205)
         avatarInfo = {}
-        avatarInfo.body = [ "vanilla", "tk", "sg", "suwa", "ino", "sukirobo" ].sort(() => Math.random() - 0.5)[0]
-        avatarInfo.eye = [ "vanilla", "tk", "sg", "suwa", "ino", "sukirobo" ].sort(() => Math.random() - 0.5)[0]
+        avatarInfo.body = Object.keys(parts["body"]).sort(() => Math.random() - 0.5)[0]
+        avatarInfo.eye = Object.keys(parts["eyes"]).sort(() => Math.random() - 0.5)[0]
         avatarInfo.basecolor = "#" + ('0' + (r+50).toString(16)).slice(-2) + ('0' + (g+50).toString(16)).slice(-2) + ('0' + (b+50).toString(16)).slice(-2)
         avatarInfo.accentcolor = "#" + ('0' + r.toString(16)).slice(-2) + ('0' + g.toString(16)).slice(-2) + ('0' + b.toString(16)).slice(-2)
     }
