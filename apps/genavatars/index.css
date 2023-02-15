@@ -29,6 +29,10 @@
 .label {
     margin-bottom: 10px;
     font-size: small;
+    border: solid black;
+    background-color: white;
+    color: red;
+    padding: 5px;
 }
 .avatar.speaking {
     animation: avatar-etc-speaking 0.2s steps(2) infinite;

@@ -29,10 +29,12 @@ function appendAvatar(avatar, label) {
     avatar_dom.onmouseenter = (_) => { avatar_dom.classList.add("speaking") }
     avatar_dom.onmouseleave = (_) => { avatar_dom.classList.remove("speaking") }
     
-    var label_dom = document.createElement("div")
-    label_dom.innerHTML = label
-    label_dom.classList.add("label")
-    avatar_dom.appendChild(label_dom)
+    if (label) {
+        var label_dom = document.createElement("div")
+        label_dom.innerHTML = label
+        label_dom.classList.add("label")
+        avatar_dom.appendChild(label_dom)
+    }
     document.getElementById("avatars").appendChild(avatar_dom)
 }
 
@@ -44,7 +46,7 @@ function generateAvatars(parts, skelton, reserved) {
     })
     for(var i=0; i<120; i++) {
         const avatar = buildAvatar(parts, skelton, undefined)
-        appendAvatar(avatar, "")
+        appendAvatar(avatar, undefined)
     }
 }
 
