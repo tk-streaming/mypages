@@ -21,12 +21,13 @@ function buildAvatar(parts, skelton, avatarInfo) {
 function appendAvatar(avatar, label) {
     var avatar_dom = document.createElement("div")
     avatar_dom.classList.add("avatar")
-    avatar_dom.classList.add("speaking")
     avatar_dom.style.backgroundImage = `url('${avatar.data}')`
     avatar_dom.style.setProperty("cursor", "hand")
-    avatar_dom.onclick = async (e) => {
+    avatar_dom.onclick = async (_) => {
         await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eye:${avatar.eye} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
     }
+    avatar_dom.onmouseenter = (_) => { avatar_dom.classList.add("speaking") }
+    avatar_dom.onmouseleave = (_) => { avatar_dom.classList.remove("speaking") }
     
     var label_dom = document.createElement("div")
     label_dom.innerHTML = label
