@@ -15,8 +15,9 @@ function buildAvatar(parts, skelton) {
 }
 
 window.addEventListener('load', async () => {
-    const parts = JSON.parse(await fetch("./parts.json"));
     const skelton = await fetch("./skelton.svg");
+    console.log(skelton)
+    const parts = JSON.parse(await fetch("./parts.json"));
     for(var i=0; i<120; i++) {
         const svg = buildAvatar(parts, skelton)
         var avatar = document.createElement("div")
