@@ -9,13 +9,13 @@ function buildAvatar(parts, skelton, avatarInfo) {
         const b = Math.floor(Math.random() * 205)
         avatarInfo = {}
         avatarInfo.body = Object.keys(parts["body"]).sort(() => Math.random() - 0.5)[0]
-        avatarInfo.eye = Object.keys(parts["eyes"]).sort(() => Math.random() - 0.5)[0]
+        avatarInfo.eyes = Object.keys(parts["eyes"]).sort(() => Math.random() - 0.5)[0]
         avatarInfo.basecolor = "#" + ('0' + (r+50).toString(16)).slice(-2) + ('0' + (g+50).toString(16)).slice(-2) + ('0' + (b+50).toString(16)).slice(-2)
         avatarInfo.accentcolor = "#" + ('0' + r.toString(16)).slice(-2) + ('0' + g.toString(16)).slice(-2) + ('0' + b.toString(16)).slice(-2)
     }
     const s = skelton
         .replace(/\[\[body\]\]/g, parts["body"][avatarInfo.body])
-        .replace(/\[\[eyes\]\]/g, parts["eyes"][avatarInfo.eye])
+        .replace(/\[\[eyes\]\]/g, parts["eyes"][avatarInfo.eyes])
         .replace(/\[\[basecolor\]\]/g, avatarInfo.basecolor)
         .replace(/\[\[accentcolor\]\]/g, avatarInfo.accentcolor)
     avatarInfo.data = `data:image/svg+xml;charset=utf8,${encodeURIComponent(s)}`
@@ -27,8 +27,11 @@ function appendAvatar(avatar, label) {
     avatar_dom.classList.add("avatar")
     avatar_dom.style.backgroundImage = `url('${avatar.data}')`
     avatar_dom.style.setProperty("cursor", "hand")
+    avatar_dom.onclick = (_) => { avatar_dom.target.href = avatar.data }
     avatar_dom.onclick = async (_) => {
-        await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eyes:${avatar.eye} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
+        window.location.href = 
+        `edit.html?body=${avatar.body}&eyes=${avatar.eyes}&basecolor=${encodeURIComponent(avatar.basecolor)}&accentcolor=${encodeURIComponent(avatar.accentcolor)}`
+        // await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eyes:${avatar.eyes} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
     }
     avatar_dom.onmouseenter = (_) => { avatar_dom.classList.add("speaking") }
     avatar_dom.onmouseleave = (_) => { avatar_dom.classList.remove("speaking") }
@@ -66,4 +69,3 @@ window.addEventListener('load', async () => {
         }
     })
 });
-

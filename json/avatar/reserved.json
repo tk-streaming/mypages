@@ -1,7 +1,7 @@
 {
-    "660719004880601108": { "name": "tk", "avatar": { "body": "tk", "eye": "tk", "basecolor": "#f7931e", "accentcolor": "#f15a24" } },
-    "758282036649263114": { "name": "sg", "avatar": { "body": "sg", "eye": "sg", "basecolor": "#3fa9f5", "accentcolor": "#0071bc" } },
-    "810529222418104320": { "name": "suwa", "avatar": { "body": "suwa", "eye": "suwa", "basecolor": "#e6e6e6", "accentcolor": "gray" } },
-    "810529923764715551": { "name": "ino", "avatar": { "body": "ino", "eye": "ino", "basecolor": "#ff7bac", "accentcolor": "#ed1e79" } },
-    "758310254068236320": { "name": "sukirobo", "avatar": { "body": "sukirobo", "eye": "sukirobo", "basecolor": "#8cc63f", "accentcolor": "#009245" } }
+    "660719004880601108": { "name": "tk", "avatar": { "body": "tk", "eyes": "tk", "basecolor": "#f7931e", "accentcolor": "#f15a24" } },
+    "758282036649263114": { "name": "sg", "avatar": { "body": "sg", "eyes": "sg", "basecolor": "#3fa9f5", "accentcolor": "#0071bc" } },
+    "810529222418104320": { "name": "suwa", "avatar": { "body": "suwa", "eyes": "suwa", "basecolor": "#e6e6e6", "accentcolor": "gray" } },
+    "810529923764715551": { "name": "ino", "avatar": { "body": "ino", "eyes": "ino", "basecolor": "#ff7bac", "accentcolor": "#ed1e79" } },
+    "758310254068236320": { "name": "sukirobo", "avatar": { "body": "sukirobo", "eyes": "sukirobo", "basecolor": "#8cc63f", "accentcolor": "#009245" } }
 }
