@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script src="genavatars.js"></script>
+        <style>
+#avatars {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    counter-reset: avatar-count;
+    flex-wrap: wrap;
+}
+.avatar {
+    text-align: center;
+    counter-increment: avatar-count;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    transform-origin: top left;
+}
+
+.avatar {
+    width: 187px;
+    height: 243px;
+}
+.avatar.speaking {
+    width: 187px;
+    height: 243px;
+    animation: avatar-etc-speaking 0.2s steps(2) infinite;
+}
+@keyframes avatar-etc-speaking {
+    to {
+        background-position: -374px 0;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <div id="avatars">
+            
+        </div>
+    </body>
+</html>
