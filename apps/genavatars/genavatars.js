@@ -36,10 +36,8 @@ function appendAvatar(avatar, label) {
     document.getElementById("avatars").appendChild(avatar_dom)
 }
 
-window.addEventListener('load', async () => {
-    const skelton = await (await fetch("https://tk-streaming.github.io/mypages/img/skelton.svg")).text()
-    const parts = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/parts.json")).text())
-    const reserved = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/reserved.json")).text())
+function generateAvatars(parts, skelton, reserved) {
+    document.getElementById("avatars").innerHTML = ""
     Object.values(reserved).forEach(x => {
         const avatar = buildAvatar(parts, skelton, x.avatar)
         appendAvatar(avatar, `RESERVED`)
@@ -48,6 +46,17 @@ window.addEventListener('load', async () => {
         const avatar = buildAvatar(parts, skelton, undefined)
         appendAvatar(avatar, "")
     }
-});
+}
 
+window.addEventListener('load', async () => {
+    const skelton = await (await fetch("https://tk-streaming.github.io/mypages/img/skelton.svg")).text()
+    const parts = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/parts.json")).text())
+    const reserved = JSON.parse(await (await fetch("https://tk-streaming.github.io/mypages/json/avatar/reserved.json")).text())
+    generateAvatars(parts, skelton, reserved)
+    document.querySelectorAll(".reloader").forEach(dom => {
+        dom.onclick = (_) => {
+            generateAvatars(parts, skelton, reserved)
+        }
+    })
+});
 
