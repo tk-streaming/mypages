@@ -1,6 +1,6 @@
 function buildAvatar(parts, skelton) {
-    const body = [ "vanilla", "tk", "sg", "suwa", "ino", "sukirobo" ].sort(() => Math.random())[0]
-    const eye = [ "vanilla", "tk", "sg", "suwa", "ino", "sukirobo" ].sort(() => Math.random())[0]
+    const body = [ "vanilla", "tk", "sg", "suwa", "ino", "sukirobo" ].sort(() => Math.random() - 0.5)[0]
+    const eye = [ "vanilla", "tk", "sg", "suwa", "ino", "sukirobo" ].sort(() => Math.random() - 0.5)[0]
     const r = Math.floor(Math.random() * 205)
     const g = Math.floor(Math.random() * 205)
     const b = Math.floor(Math.random() * 205)
