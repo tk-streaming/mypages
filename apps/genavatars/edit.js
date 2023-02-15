@@ -17,6 +17,7 @@ function refreshPreview(skelton, parts) {
     preview_dom.classList.add("avatar")
     preview_dom.style.backgroundImage = `url('${data}')`
     document.getElementById("command").innerText = `/nb body:${body} eyes:${eyes} basecolor:${basecolor} accentcolor:${accentcolor}`
+    document.getElementById("url").innerText = `https://tk-streaming.github.io/mypages/apps/genavatars/edit.html?body=${body}&eyes=${eyes}&basecolor=${encodeURIComponent(basecolor)}&accentcolor=${encodeURIComponent(accentcolor)}`
 }
 
 window.addEventListener('load', async () => {
