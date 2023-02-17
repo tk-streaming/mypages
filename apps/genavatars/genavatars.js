@@ -31,7 +31,6 @@ function appendAvatar(avatar, label) {
     avatar_dom.onclick = async (_) => {
         window.location.href = 
         `edit.html?body=${avatar.body}&eyes=${avatar.eyes}&basecolor=${encodeURIComponent(avatar.basecolor)}&accentcolor=${encodeURIComponent(avatar.accentcolor)}`
-        // await navigator.clipboard.writeText(`/nb avatar body:${avatar.body} eyes:${avatar.eyes} basecolor:${avatar.basecolor} accentcolor:${avatar.accentcolor}`)
     }
     avatar_dom.onmouseenter = (_) => { avatar_dom.classList.add("speaking") }
     avatar_dom.onmouseleave = (_) => { avatar_dom.classList.remove("speaking") }

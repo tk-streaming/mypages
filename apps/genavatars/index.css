@@ -43,9 +43,16 @@
     }
 }
 
-#form {
-    margin-top: 2rem;
+
+.copiable {
+    display: inline;
+    vertical-align: baseline;
 }
-#info {
-    margin-top: 2rem;
+.copiable .icon {
+    transform: translate(0, 0.4rem);
+    cursor: hand;
+}
+.copiable code {
+    font-family: 'Courier New', Courier, monospace;
+    padding-top: -1rem;
 }

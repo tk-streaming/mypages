@@ -18,8 +18,16 @@ function refreshPreview(skelton, parts) {
     preview_dom.style.backgroundImage = `url('${data}')`
     preview_dom.onmouseenter = (_) => { preview_dom.classList.add("speaking") }
     preview_dom.onmouseleave = (_) => { preview_dom.classList.remove("speaking") }
-    document.getElementById("command").innerText = `/nb body:${body} eyes:${eyes} basecolor:${basecolor} accentcolor:${accentcolor}`
-    document.getElementById("url").innerText = `https://tk-streaming.github.io/mypages/apps/genavatars/edit.html?body=${body}&eyes=${eyes}&basecolor=${encodeURIComponent(basecolor)}&accentcolor=${encodeURIComponent(accentcolor)}`
+    const command = `/nb body:${body} eyes:${eyes} basecolor:${basecolor} accentcolor:${accentcolor}`
+    const url = `https://tk-streaming.github.io/mypages/apps/genavatars/edit.html?body=${body}&eyes=${eyes}&basecolor=${encodeURIComponent(basecolor)}&accentcolor=${encodeURIComponent(accentcolor)}`
+    document.querySelector("#command code").innerText = command
+    document.querySelector("#url code").innerText = url
+    document.querySelector("#command .icon").onclick = async (_) => {
+        await navigator.clipboard.writeText(command)
+    }
+    document.querySelector("#url .icon").onclick = async (_) => {
+        await navigator.clipboard.writeText(url)
+    }
 }
 
 window.addEventListener('load', async () => {
