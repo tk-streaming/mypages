@@ -18,7 +18,7 @@ function refreshPreview(skelton, parts) {
     preview_dom.style.backgroundImage = `url('${data}')`
     preview_dom.onmouseenter = (_) => { preview_dom.classList.add("speaking") }
     preview_dom.onmouseleave = (_) => { preview_dom.classList.remove("speaking") }
-    const command = `/nb body:${body} eyes:${eyes} basecolor:${basecolor} accentcolor:${accentcolor}`
+    const command = `/nb avatar body:${body} eyes:${eyes} basecolor:${basecolor} accentcolor:${accentcolor}`
     const url = `https://tk-streaming.github.io/mypages/apps/genavatars/edit.html?body=${body}&eyes=${eyes}&basecolor=${encodeURIComponent(basecolor)}&accentcolor=${encodeURIComponent(accentcolor)}`
     document.querySelector("#command code").innerText = command
     document.querySelector("#url code").innerText = url

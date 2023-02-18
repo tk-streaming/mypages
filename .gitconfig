@@ -1,0 +1,2 @@
+git config --local user.name tk-streaming
+git config --local user.email tkstreaming@gmail.com
