@@ -26,6 +26,7 @@ function appendAvatar(avatar, label) {
     var avatar_dom = document.createElement("div")
     avatar_dom.classList.add("avatar")
     avatar_dom.style.backgroundImage = `url('${avatar.data}')`
+    console.log(`url('${avatar.data}')`)
     avatar_dom.style.setProperty("cursor", "hand")
     avatar_dom.onclick = (_) => { avatar_dom.target.href = avatar.data }
     avatar_dom.onclick = async (_) => {
